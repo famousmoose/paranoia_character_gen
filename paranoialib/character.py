@@ -93,19 +93,21 @@ class Character:
 		if self.profile[c]['skills'][skill] > 5:
 			self.profile[c]['skills'][skill] = 5
 
-
 	def setSkillTotals(self):
 		for group, entry in self.profile.items():
 			for v in entry['skills'].values():
 				self.profile[group]['total'] += v
-				if self.profile[group]['total'] < -5:
-					self.profile[group]['total'] = -5
-				if self.profile[group]['total'] > 5:
-					self.profile[group]['total'] = 5
+			if self.profile[group]['total'] < -5:
+				self.profile[group]['total'] = -5
+			if self.profile[group]['total'] > 5:
+				self.profile[group]['total'] = 5
 	
 	def getCategories(self):
 		return list(self.profile.keys())
 	
+	def getCategorySkillsValues(self,category):
+		return list(self.profile[category]['skills'].items())
+
 	def printCharacter(self):
 		profile = self.profile
 		spacing = ' '*8
@@ -123,11 +125,12 @@ class Character:
 
 		print(spacing.join(o))
 		print()
-		
+		print(profile)
 		for i in range(0,4):
 			o = []
 			for c in self.getCategories():
-				o.append("{:<16} {:>2}".format(list(profile[c]['skills'].keys())[i]+':',list(profile[c]['skills'].values())[i]))
+				skills = self.getCategorySkillsValues(c)
+				o.append("{:<16} {:>2}".format(skills[i][0],skills[i][1]))
 			print(spacing.join(o))
 
 

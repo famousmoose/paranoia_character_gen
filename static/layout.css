@@ -1,0 +1,27 @@
+.skills {
+    width: 600px;
+    display: grid;
+    grid:
+      ". . . ." 1fr
+      ". . . ." 1fr
+      ". . . ." 1fr
+      ". . . ." 1fr
+      ". . . ." 1fr
+      / 1fr 1fr 1fr 1fr;
+    gap: 0px;
+    grid-auto-flow: column;
+  }
+
+  .skill, .category {
+    padding: 5px;
+    display: flex; 
+    justify-content: space-between;
+}
+  .category {
+    background-color: red;
+    color:white;
+    outline: 1px solid black;
+    
+
+}
+

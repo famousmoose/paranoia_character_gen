@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paranoia Perfect Edition Character Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+</head>
+<body>
+    <h1>Paranoia!</h1>
+    <h2>New Character</h2>
+    <section class="skills">
+        {% for category in character.getCategories() %}
+        <div class="category"><div>{{category}}:</div>
+        <div> {{character.profile[category]['total']}}</div></div>
+        {% for skill in character.getCategorySkillsValues(category) %}
+        <div class="skill""><div>{{skill[0]}}:</div><div> {{skill[1]}}</div></div>
+        {% endfor %}
+        {% endfor %}
+      </section>
+      <p>foo</p>
+    </body>
+</html>
